@@ -75,18 +75,8 @@ def login():
                 'email': result.get('email', username + '@ictu.edu.vn'),
                 'major': result.get('major', 'Chưa cập nhật') # Lấy thông tin ngành
             }
-            # Thêm avatar_url vào response nếu có file ảnh
-            avatar_url = None
-            student_id = result.get('studentId')
-            if student_id:
-                avatar_folder = os.path.join(os.path.dirname(__file__), 'avatars')
-                for f in os.listdir(avatar_folder):
-                    if f.startswith(student_id + '.'):
-                        avatar_url = f"/avatars/{f}"
-                        break
-            if not avatar_url:
-                avatar_url = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
-            result['avatar_url'] = avatar_url
+            # Luôn trả về avatar mặc định
+            result['avatar_url'] = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
             return jsonify(result)
         else:
             return jsonify(result)
