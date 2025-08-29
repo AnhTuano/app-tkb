@@ -3,5 +3,7 @@ gunicorn
 requests
 beautifulsoup4
 pandas
+waitress
 
 xlrd>=2.0.1
+
